@@ -1,122 +1,104 @@
 <!DOCTYPE html>
 <html lang="en-us">
+
 <head>
-	<meta charset="UTF-8">
-	<title>Geographic News</title>
-	<!--Reset css-->
-	<link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+    <meta charset="UTF-8">
+    <title>Geographic News</title>
+    <!--Reset css-->
+    <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+    <!--Local css-->
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <!--Bootstrap css-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <!--jQuery library-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<style type="text/css">
+		#map {
+			width: auto;
+			height: 700px;
 
-	<!--Local css-->
-  	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
-
-	<!--Bootstrap css-->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
-
-	<!--jQuery library-->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		}
+	</style>
 
 </head>
 
 <body>
-<div class="container">
-<!--Game name-->
-			<div class="row">
-				<div class="col-md-12 center-block" id="masthead">
-					<h1>API Testing</h1>
-				</div>
-			</div>
+    <div class="container">
+        <!--Game name-->
+        <div class="row">
+            <div class="col-md-12 center-block">
+            	<div id="map"></div>
+            </div>
+        </div>
+        <!--Rendered buttons will be placed here-->
+        <div class="row">
+            <div class="col-md-2">
+            </div>
+            <div class="col-md-8" id="news-view">
+            </div>
+            <div class="col-md-2">
+            </div>
+        </div>
+        <!--Form to allow user to add button to array-->
+        <div class="row">
+            <div class="col-md-12">
+                <form id="emotion-form">
+                    <label for="city-input"></label>
+                    <input id="add-city" type="submit" value="Select A City">
+                    <input type="text" id="userCity-input">
+                    <br>
+                </form>
+            </div>
+        </div>
+        <br>
+        <div>
+            <p>
+                You picked
+                <span id="location"></span> as your location! Check out the news via journalists and social media.
+            </p>
+        </div>
+        <div id="titleDiv">
+            <p id="leftCollumnTitle"></p>
+            <p id="rightCollumnTitle"></p>
+        </div>
+        <div class="masonry">
+            <div class="item journalismResult" id="item1"></div>
+            <div class="item journalismResult" id="item2"></div>
+            <div class="item journalismResult" id="item3"></div>
+            <div class="item journalismResult" id="item4"></div>
+            <div class="item journalismResult" id="item5"></div>
+            <div class="item journalismResult" id="item7"></div>
+            <div class="item journalismResult" id="item8"></div>
+            <div class="item journalismResult" id="item9"></div>
+            <div class="item journalismResult" id="item10"></div>
+            <div class="item twitterResult" id="item11"></div>
+            <div class="item twitterResult" id="item12"></div>
+            <div class="item twitterResult" id="item13"></div>
+            <div class="item twitterResult" id="item14"></div>
+            <div class="item twitterResult" id="item15"></div>
+            <div class="item twitterResult" id="item16"></div>
+            <div class="item twitterResult" id="item17"></div>
+            <div class="item twitterResult" id="item18"></div>
+            <div class="item twitterResult" id="item19"></div>
+            <div class="item twitterResult" id="item20"></div>
+        </div>
+        <!--Gifs will be placed here-->
+        <div class="row">
+            <div class="col-md-2">
+            </div>
+            <div class="col-md-8" id="newsHere">
+            </div>
+            <div class="col-md-2">
+            </div>
+        </div>
+    </div>
 
-<!--Rendered buttons will be placed here-->
-			<div class="row">
-				<div class="col-md-2">
-				</div>
-   		 		<div class="col-md-8" id="news-view">
-   		 		</div>
-				<div class="col-md-2">
-				</div>
-			</div>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD1Uqd8fvNhgRklbA6UVIr5Mmf23Ns0aGA&callback=initMap"></script>
 
-<!--Form to allow user to add button to array-->
-			<div class="row">
-				<div class="col-md-12">
-				<form id="emotion-form">
-      				<label for="city-input"></label>
-      				<input id="add-city" type="submit" value="Select A City"><input type="text" id="userCity-input"><br>
-    			</form>
-    			</div>
-			</div>
-			<br>
-  
-
-	<div class="container">
-
-		<div id="mapDiv">
-			
-		</div>
-
-		<div>
-			<p>
-
-				You picked
-
-				<span id="location"></span>
-
-				as your location! Check out the news via journalists and social media.
-
-			</p>
-
-		</div>
-
-		<div id="titleDiv">
-
-			<p id="leftCollumnTitle"></p>
-
-			<p id="rightCollumnTitle"></p>
-
-		</div>
-
-		<div class="masonry">
-
-			<div class="item journalismResult" id="item1"></div>
-			<div class="item journalismResult" id="item2"></div>
-			<div class="item journalismResult" id="item3"></div>
-			<div class="item journalismResult" id="item4"></div>
-			<div class="item journalismResult" id="item5"></div>
-			<div class="item journalismResult" id="item7"></div>
-			<div class="item journalismResult" id="item8"></div>
-			<div class="item journalismResult" id="item9"></div>
-			<div class="item journalismResult" id="item10"></div>
-
-			<div class="item twitterResult" id="item11"></div>
-			<div class="item twitterResult" id="item12"></div>
-			<div class="item twitterResult" id="item13"></div>
-			<div class="item twitterResult" id="item14"></div>
-			<div class="item twitterResult" id="item15"></div>
-			<div class="item twitterResult" id="item16"></div>
-			<div class="item twitterResult" id="item17"></div>
-			<div class="item twitterResult" id="item18"></div>
-			<div class="item twitterResult" id="item19"></div>
-			<div class="item twitterResult" id="item20"></div>
-
-		</div>
-		
-	</div>
-  
-<!--Gifs will be placed here-->
-			<div class="row">
-				<div class="col-md-2">
-				</div>
-   		 		<div class="col-md-8" id="newsHere">
-   		 		</div>
-				<div class="col-md-2">
-				</div>
-			</div>
-</div>
-
-<!--jQuery library-->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
-<script type="text/javascript" src="assets/javascript/game.js"></script>
+    <!--jQuery library-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="assets/javascript/game.js"></script>
 
 </body>
+
 </html>
