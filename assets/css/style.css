@@ -1,4 +1,116 @@
+/* global variables -------------------------------------- */
+
+body, html {
+  margin: 0;
+  overflow: hidden;
+}
+
+/* from scroll css tutorial */
+*, *:before, *:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/* top divs ------------------------------------------------ */
+
 #map {
 	width: auto;
-	height: 500px;
-		}
+	height: 250px;
+}
+
+#youPickedSentence {
+	font-size: 32px;
+	text-align: center;
+	padding-top: 20px;
+}
+
+#checkItSentence {
+	text-align: center;
+	margin-bottom: 35px;
+}
+
+/* results ------------------------------------------------- */
+
+#resultContainer {
+	margin: 0;
+}
+
+#left {
+  position: relative;
+  float: left;
+  width: 47%;
+  height: 300px;
+  overflow: scroll;  
+  border-top: .5px solid rgba(50, 50, 30, .7);
+}
+
+#right {
+  position: relative;
+  float: left;
+  overflow: scroll;
+  width: 47%;
+  height: 300px;
+  border-top: .5px solid rgba(50, 100, 150, .7);
+}
+
+
+/* --------- journalism --------- */ 
+.journalismResultDiv {
+	margin: 25px 25px 15px 25px;
+	padding: 5px 15px 5px 15px;
+	background-color: white;
+	border-bottom: .5px solid rgba(50, 50, 50, .2);
+
+}
+
+.serif {
+	font-family: serif;
+}
+
+.journalismTitle {
+	font-weight: bold;
+	margin: 10px 0px 1px 0px;
+	font-size: 18px;
+}
+
+.journalismAuthor {
+	font-size: 12px;
+	color: gray;
+	margin: 0px 0px 3px 0px;
+    text-transform: uppercase;
+}
+
+.journalismContent {
+	font-size: 14px;
+}
+
+
+/* -------- media ---------- */ 
+.mediaResultDiv {
+	margin: 25px 25px 15px 25px;
+	padding: 5px 15px 5px 15px;
+	background-color: white;
+	border-bottom: .5px solid rgba(50, 50, 50, .2);
+
+}
+
+.sans {
+	font-family: sans-serif;
+}
+
+.mediaTitle {
+	font-weight: bold;
+	margin: 10px 0px 1px 0px;
+	font-size: 18px;
+}
+
+.mediaAuthor {
+	font-size: 12px;
+	color: gray;
+	margin: 0px 0px 3px 0px;
+}
+
+.mediaContent {
+	font-size: 14px;
+}
