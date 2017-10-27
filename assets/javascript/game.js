@@ -1,12 +1,43 @@
   var map, infoWindow;
 
-  function initMap() {
-    map = new google.maps.Map(document.getElementById('map'), {
-      center: { lat: -34.397, lng: 150.644 },
-      zoom: 6
-    });
-    infoWindow = new google.maps.InfoWindow;
+   function initMap() {
+  var map, infoWindow, marker;
+  let markerArr;
+    var options = {
+      start: {
+        center: { lat: -34.397, lng: 150.644 },
+        zoom: 6
+      }
+    };
+    var infoWindow = new google.maps.InfoWindow
 
+
+    // creating a map
+    map = new google.maps.Map(document.getElementById('map'), options.start);
+
+    google.maps.event.addListener(map, 'click', function(event) {
+      var latLng = event.latLng
+      addMarker({ coords: latLng });
+      console.log("lat: "+ latLng.lat() +",lng: "+ latLng.lng());
+      console.log(event)
+    });
+
+    function addSample() {
+    let markerArr = [{
+        coords: { lat: -37.8136, lng: 144.9631 },
+        content: "Melbourne"
+      },
+      {
+        coords: { lat: -41.2865, lng: 174.7762 },
+        content: "Wellington"
+      }]
+    }
+    ;
+    // marker
+    // var marker =  new google.maps.Marker({
+    //   position:{lat:33.8688, lng:151.2093},
+    //   map:map,
+    // })
     // Try HTML5 geolocation.
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(function(position) {
@@ -26,15 +57,50 @@
       // Browser doesn't support Geolocation
       handleLocationError(false, infoWindow, map.getCenter());
     }
-  }
 
-  function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-    infoWindow.setPosition(pos);
-    infoWindow.setContent(browserHasGeolocation ?
-      'Error: The Geolocation service failed.' :
-      'Error: Your browser doesn\'t support geolocation.');
-    infoWindow.open(map);
-  }
+    function addMarker(props) {
+      var marker = new google.maps.Marker({
+        position: props.coords,
+        map: map,
+      });
+      // check for new icons
+      if (props.iconImage) {
+        // set icon image
+        marker.setIcon(props.iconImage)
+      }
+      if (props.content) {
+        var infoWindow = new google.maps.InfoWindow({
+          content: props.content
+        })
+      }
+      marker.addListener('click', function() {
+        infoWindow.open(map, marker)
+      });
+    }
+
+    for (i = 0; i < markerArr.length; i++) {
+      addMarker(markerArr[i]);
+    }
+
+    // addMarker({
+    //   coords: { lat: -37.8136, lng: 144.9631 },
+    //   content: "Melbourne"
+    // });
+
+    function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+      infoWindow.setPosition(pos);
+      infoWindow.setContent(browserHasGeolocation ?
+        'Error: The Geolocation service failed.' :
+        'Error: Your browser doesn\'t support geolocation.');
+      infoWindow.open(map);
+    }
+
+
+  };
+
+
+
+
 
 
 //-----------------------------Twitter-------------------------------------//
