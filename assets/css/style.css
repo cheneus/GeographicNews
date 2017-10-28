@@ -12,6 +12,10 @@ body, html {
   box-sizing: border-box;
 }
 
+.sans {
+	font-family: sans-serif;
+}
+
 /* top divs ------------------------------------------------ */
 
 #map {
@@ -20,14 +24,21 @@ body, html {
 }
 
 #youPickedSentence {
-	font-size: 32px;
+	font-size: 28px;
 	text-align: center;
-	padding-top: 20px;
+	margin: 20px 0px 0px 0px;
+}
+
+#jobTitleSearch {
+	font-size: 24px;
+	text-align: center;
+	margin: 5px 0px 0px 0px;
 }
 
 #checkItSentence {
+	font-size: 18px;
 	text-align: center;
-	margin-bottom: 35px;
+	margin: 5px 0px 0px 0px;
 }
 
 /* results ------------------------------------------------- */
@@ -39,7 +50,7 @@ body, html {
 #left {
   position: relative;
   float: left;
-  width: 47%;
+  width: 50%;
   height: 300px;
   overflow: scroll;  
   border-top: .5px solid rgba(50, 50, 30, .7);
@@ -49,14 +60,13 @@ body, html {
   position: relative;
   float: left;
   overflow: scroll;
-  width: 47%;
+  width: 50%;
   height: 300px;
   border-top: .5px solid rgba(50, 100, 150, .7);
 }
 
-
-/* --------- journalism --------- */ 
-.journalismResultDiv {
+/* -------- glassdoor ---------- */ 
+.glassdoorResultDiv {
 	margin: 25px 25px 15px 25px;
 	padding: 5px 15px 5px 15px;
 	background-color: white;
@@ -64,30 +74,25 @@ body, html {
 
 }
 
-.serif {
-	font-family: serif;
-}
-
-.journalismTitle {
+.glassdoorTitle {
 	font-weight: bold;
 	margin: 10px 0px 1px 0px;
 	font-size: 18px;
 }
 
-.journalismAuthor {
+.glassdoorCompany {
 	font-size: 12px;
 	color: gray;
 	margin: 0px 0px 3px 0px;
     text-transform: uppercase;
 }
 
-.journalismContent {
+.glassdoorDescription {
 	font-size: 14px;
 }
 
-
-/* -------- media ---------- */ 
-.mediaResultDiv {
+/* --------- search --------- */ 
+.searchResultDiv {
 	margin: 25px 25px 15px 25px;
 	padding: 5px 15px 5px 15px;
 	background-color: white;
@@ -95,22 +100,21 @@ body, html {
 
 }
 
-.sans {
-	font-family: sans-serif;
-}
-
-.mediaTitle {
+.searchTitle {
 	font-weight: bold;
 	margin: 10px 0px 1px 0px;
 	font-size: 18px;
 }
 
-.mediaAuthor {
+.searchCompany {
 	font-size: 12px;
 	color: gray;
 	margin: 0px 0px 3px 0px;
+    text-transform: uppercase;
 }
 
-.mediaContent {
+.searchDescription {
 	font-size: 14px;
 }
+
+
