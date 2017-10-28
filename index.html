@@ -35,27 +35,33 @@
             </div>
         </div>
 
-        <!--Form to allow user to add button to array 
         <div class="row">
-            <div class="col-md-12">
-                <form id="emotion-form">
-                    <label for="city-input"></label>
-                    <input id="add-city" type="submit" value="Select A City">
-                    <input type="text" id="userCity-input">
-                    <br>
-                </form>
-            </div>
-        </div> -->
 
-        <div>
+            <div class="col-md-12">
+
             <p id="youPickedSentence">
                 You picked
                 <span id="location"> ___________  </span> as your location! 
             </p>
+
+            <form id="jobTitleSearch">
+
+                <label for="user-input">Search a Job Title</label>
+
+                <input type="text" id="user-input">
+
+                <input id="add-city" type="submit" value="Submit">
+
+            </form>
+
             <p id="checkItSentence">
-                Check out the news via journalists and social media.
+                Check out oppurtunities via Glassdoor and other sear.
             </p>
+
+
+            </div>
         </div>
+
         <div id="titleDiv">
             <p id="leftCollumnTitle"></p>
             <p id="rightCollumnTitle"></p>
@@ -66,33 +72,29 @@
             <!-- left collumn, nyt results !-->
             <div id="left">
 
-                <div class="journalismResultDiv">
+                <div class="glassdoorResultDiv">
 
-                    <p class="serif journalismTitle">Article Title: this is the news</p>
+                    <p class="sans glassdoorTitle">Job Title</p>
 
-                    <p class="serif journalismAuthor">By Author Name</p>
+                    <p class="sans glassdoorCompany">company</p>
 
-                    <p class="serif journalismContent">
+                    <p class="sans glassdoorDescription">
 
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. 
-
-                        Curabitur odio ipsum, porta et malesuada vitae, congue id odio. Pellentesque a luctus quam. Proin at nisi felis. Pellentesque tincidunt elementum purus, ac rhoncus elit viverra sit amet. Aliquam ut porttitor eros. Cras non auctor diam, id gravida nisi. Cras a pulvinar erat, eu eleifend elit. Donec vitae diam feugiat, ultricies purus non, tincidunt ante. Ut consequat arcu id nibh elementum dictum. Sed ac lacus scelerisque, varius nunc eu, egestas metus. Cras varius suscipit tortor eget blandit. In feugiat mattis pharetra. Nulla facilisi. Phasellus dui dolor, tincidunt id nulla quis, pulvinar pellentesque arcu. Fusce suscipit laoreet eleifend. Donec scelerisque placerat dapibus.
 
                     </p>
 
                 </div>
 
-                <div class="journalismResultDiv">
+                <div class="glassdoorResultDiv">
 
-                    <p class="serif journalismTitle">Article Title: this is the news</p>
+                    <p class="sans glassdoorTitle">Awesome Job Title</p>
 
-                    <p class="serif journalismAuthor">By Author Name</p>
+                    <p class="sans glassdoorCompany">the cool company</p>
 
-                    <p class="serif journalismContent">
+                    <p class="sans glassdoorDescription">
 
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. 
-
-                        Curabitur odio ipsum, porta et malesuada vitae, congue id odio. Pellentesque a luctus quam. Proin at nisi felis. Pellentesque tincidunt elementum purus, ac rhoncus elit viverra sit amet. Aliquam ut porttitor eros. Cras non auctor diam, id gravida nisi. Cras a pulvinar erat, eu eleifend elit. Donec vitae diam feugiat, ultricies purus non, tincidunt ante. Ut consequat arcu id nibh elementum dictum. Sed ac lacus scelerisque, varius nunc eu, egestas metus. Cras varius suscipit tortor eget blandit. In feugiat mattis pharetra. Nulla facilisi. Phasellus dui dolor, tincidunt id nulla quis, pulvinar pellentesque arcu. Fusce suscipit laoreet eleifend. Donec scelerisque placerat dapibus.
 
                     </p>
 
@@ -103,29 +105,33 @@
             <!-- right collumn, twitter results !-->
             <div id="right">
 
-                <div class="mediaResultDiv">
+                <div class="journalismResultDiv">
 
-                    <p class="sans mediaTitle">tweet tweet</p>
+                    <p class="serif journalismTitle">Article Title: this is the news</p>
 
-                    <p class="sans mediaAuthor">@twittername</p>
+                    <p class="serif journalismAuthor">By Author Name</p>
 
-                    <p class="sans mediaContent">
+                    <p class="serif journalismContent">
 
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. 
+
+                        Curabitur odio ipsum, porta et malesuada vitae, congue id odio. Pellentesque a luctus quam. Proin at nisi felis. Pellentesque tincidunt elementum purus, ac rhoncus elit viverra sit amet. Aliquam ut porttitor eros. Cras non auctor diam, id gravida nisi. Cras a pulvinar erat, eu eleifend elit. Donec vitae diam feugiat, ultricies purus non, tincidunt ante. Ut consequat arcu id nibh elementum dictum. Sed ac lacus scelerisque, varius nunc eu, egestas metus. Cras varius suscipit tortor eget blandit. In feugiat mattis pharetra. Nulla facilisi. Phasellus dui dolor, tincidunt id nulla quis, pulvinar pellentesque arcu. Fusce suscipit laoreet eleifend. Donec scelerisque placerat dapibus.
 
                     </p>
 
                 </div>
 
-                <div class="mediaResultDiv">
+                <div class="journalismResultDiv">
 
-                    <p class="sans mediaTitle">tweet tweet</p>
+                    <p class="serif journalismTitle">Article Title: this is the news</p>
 
-                    <p class="sans mediaAuthor">@twittername</p>
+                    <p class="serif journalismAuthor">By Author Name</p>
 
-                    <p class="sans mediaContent">
+                    <p class="serif journalismContent">
 
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. 
+
+                        Curabitur odio ipsum, porta et malesuada vitae, congue id odio. Pellentesque a luctus quam. Proin at nisi felis. Pellentesque tincidunt elementum purus, ac rhoncus elit viverra sit amet. Aliquam ut porttitor eros. Cras non auctor diam, id gravida nisi. Cras a pulvinar erat, eu eleifend elit. Donec vitae diam feugiat, ultricies purus non, tincidunt ante. Ut consequat arcu id nibh elementum dictum. Sed ac lacus scelerisque, varius nunc eu, egestas metus. Cras varius suscipit tortor eget blandit. In feugiat mattis pharetra. Nulla facilisi. Phasellus dui dolor, tincidunt id nulla quis, pulvinar pellentesque arcu. Fusce suscipit laoreet eleifend. Donec scelerisque placerat dapibus.
 
                     </p>
 
