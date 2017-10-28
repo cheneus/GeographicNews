@@ -12,6 +12,10 @@ body, html {
   box-sizing: border-box;
 }
 
+.sans {
+	font-family: sans-serif;
+}
+
 /* top divs ------------------------------------------------ */
 
 #map {
@@ -61,49 +65,13 @@ body, html {
   border-top: .5px solid rgba(50, 100, 150, .7);
 }
 
-
-/* --------- journalism --------- */ 
-.journalismResultDiv {
-	margin: 25px 25px 15px 25px;
-	padding: 5px 15px 5px 15px;
-	background-color: white;
-	border-bottom: .5px solid rgba(50, 50, 50, .2);
-
-}
-
-.serif {
-	font-family: serif;
-}
-
-.journalismTitle {
-	font-weight: bold;
-	margin: 10px 0px 1px 0px;
-	font-size: 18px;
-}
-
-.journalismAuthor {
-	font-size: 12px;
-	color: gray;
-	margin: 0px 0px 3px 0px;
-    text-transform: uppercase;
-}
-
-.journalismContent {
-	font-size: 14px;
-}
-
-
-/* -------- media ---------- */ 
+/* -------- glassdoor ---------- */ 
 .glassdoorResultDiv {
 	margin: 25px 25px 15px 25px;
 	padding: 5px 15px 5px 15px;
 	background-color: white;
 	border-bottom: .5px solid rgba(50, 50, 50, .2);
 
-}
-
-.sans {
-	font-family: sans-serif;
 }
 
 .glassdoorTitle {
@@ -116,8 +84,37 @@ body, html {
 	font-size: 12px;
 	color: gray;
 	margin: 0px 0px 3px 0px;
+    text-transform: uppercase;
 }
 
 .glassdoorDescription {
 	font-size: 14px;
 }
+
+/* --------- search --------- */ 
+.searchResultDiv {
+	margin: 25px 25px 15px 25px;
+	padding: 5px 15px 5px 15px;
+	background-color: white;
+	border-bottom: .5px solid rgba(50, 50, 50, .2);
+
+}
+
+.searchTitle {
+	font-weight: bold;
+	margin: 10px 0px 1px 0px;
+	font-size: 18px;
+}
+
+.searchCompany {
+	font-size: 12px;
+	color: gray;
+	margin: 0px 0px 3px 0px;
+    text-transform: uppercase;
+}
+
+.searchDescription {
+	font-size: 14px;
+}
+
+
