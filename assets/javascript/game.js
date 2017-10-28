@@ -39,24 +39,24 @@
     //   map:map,
     // })
     // Try HTML5 geolocation.
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(function(position) {
-        var pos = {
-          lat: position.coords.latitude,
-          lng: position.coords.longitude
-        };
+    // if (navigator.geolocation) {
+    //   navigator.geolocation.getCurrentPosition(function(position) {
+    //     var pos = {
+    //       lat: position.coords.latitude,
+    //       lng: position.coords.longitude
+    //     };
 
-        infoWindow.setPosition(pos);
-        infoWindow.setContent('Location found.');
-        infoWindow.open(map);
-        map.setCenter(pos);
-      }, function() {
-        handleLocationError(true, infoWindow, map.getCenter());
-      });
-    } else {
-      // Browser doesn't support Geolocation
-      handleLocationError(false, infoWindow, map.getCenter());
-    }
+    //     infoWindow.setPosition(pos);
+    //     infoWindow.setContent('Location found.');
+    //     infoWindow.open(map);
+    //     map.setCenter(pos);
+    //   }, function() {
+    //     handleLocationError(true, infoWindow, map.getCenter());
+    //   });
+    // } else {
+    //   // Browser doesn't support Geolocation
+    //   handleLocationError(false, infoWindow, map.getCenter());
+    // }
 
     function addMarker(props) {
       var marker = new google.maps.Marker({
@@ -78,29 +78,63 @@
       });
     }
 
-    for (i = 0; i < markerArr.length; i++) {
-      addMarker(markerArr[i]);
-    }
+    // for (i = 0; i < markerArr.length; i++) {
+    //   addMarker(markerArr[i]);
+    // }
 
     // addMarker({
     //   coords: { lat: -37.8136, lng: 144.9631 },
     //   content: "Melbourne"
     // });
 
-    function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-      infoWindow.setPosition(pos);
-      infoWindow.setContent(browserHasGeolocation ?
-        'Error: The Geolocation service failed.' :
-        'Error: Your browser doesn\'t support geolocation.');
-      infoWindow.open(map);
-    }
+    // function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+    //   infoWindow.setPosition(pos);
+    //   infoWindow.setContent(browserHasGeolocation ?
+    //     'Error: The Geolocation service failed.' :
+    //     'Error: Your browser doesn\'t support geolocation.');
+    //   infoWindow.open(map);
+    // }
 
 
   };
 
+//---------------------Firebase--------------------------------------//
+  var config = {
+    apiKey: "AIzaSyAuR6SOo3-eO7apiuHGGI8Ga_D9l_gWDa8",
+    authDomain: "group-project-1-50c82.firebaseapp.com",
+    databaseURL: "https://group-project-1-50c82.firebaseio.com",
+    projectId: "group-project-1-50c82",
+    storageBucket: "",
+    messagingSenderId: "345184424946"
+  };
 
+  firebase.initializeApp(config);
 
+var database = firebase.database();
 
+$("#add-job").on('click', function(){
+event.preventDefault();
+
+  //grab user input
+  var newJob = $("#user-input").val().trim();
+
+  database.ref("jobs").push(newJob);
+  console.log(newJob);
+
+  //clear field of user input
+  $("#user-input").val("");
+
+});
+
+$("#map").on('click', function(){
+event.preventDefault();
+
+  //grab user location selection
+  var newLocation = $('#location').val().trim();
+
+  database.ref("locations").push(newLocation);
+
+});
 
 
 //-----------------------------Twitter-------------------------------------//
