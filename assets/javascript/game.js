@@ -121,6 +121,9 @@ event.preventDefault();
   database.ref("jobs").push(newJob);
   console.log(newJob);
 
+  //clear field of user input
+  $("#user-input").val("");
+
 });
 
 $("#map").on('click', function(){
