@@ -43,12 +43,35 @@
   // locate you.
 
   function initMap() {
+  var map, infoWindow, marker;
+  let markerArr;
      const options = {
       start: {
         center: { lat: -34.397, lng: 150.644 },
         zoom: 6
       }
     };
+    // creating a map
+    map = new google.maps.Map(document.getElementById('map'), options.start);
+
+    google.maps.event.addListener(map, 'click', function(event) {
+      var latLng = event.latLng
+      addMarker({ coords: latLng });
+      console.log("lat: "+ latLng.lat() +",lng: "+ latLng.lng());
+      console.log(event)
+    });
+
+    function addSample() {
+    let markerArr = [{
+        coords: { lat: -37.8136, lng: 144.9631 },
+        content: "Melbourne"
+      },
+      {
+        coords: { lat: -41.2865, lng: 174.7762 },
+        content: "Wellington"
+      }]
+    }
+    ;
     // let map, infoWindow, marker;
     let infoWindow = new google.maps.InfoWindow;
     let geocoderA = new google.maps.Geocoder;
@@ -90,6 +113,7 @@
         }
       ]
     };
+
     // marker
     // var marker =  new google.maps.Marker({
     //   position:{lat:33.8688, lng:151.2093},
@@ -131,13 +155,11 @@
         var infoWindow = new google.maps.InfoWindow({
           content: props.content
         })
-        marker.addListener('click', function() {
-          infoWindow.open(map, marker)
-        });
       }
+      marker.addListener('click', function() {
+        infoWindow.open(map, marker)
+      });
     }
-
-
 
     // for (i = 0; i < markerArr.length; i++) {
     //   addMarker(markerArr[i]);
@@ -156,45 +178,9 @@
       infoWindow.open(map);
     }
 
+  // $('#geolocation').on('click', function() {
 
- 
-
-  function geocode() {
-    var location = "1333 W Estes Ave"
-    axios.get("https://maps.googleapis.com/maps/api/geocode/json", {
-        params: {
-          address: location,
-          key: 'AIzaSyD1Uqd8fvNhgRklbA6UVIr5Mmf23Ns0aGA'
-        }
-      })
-      .then(function(response) {
-        console.log(response)
-        console.log(response.data.results[0].formatted_address);
-
-        var formattedAddress = response.data.results[0].formatted_address;
-        var formattedAddressOutput = '<ul class="list-group"><li class="list-group-item">${formattedAddress}</li></ul>';
-
-
-        var addressComp = response.data.results[0].address_components;
-        var addressCompOutput = '<ul class="list-group">';
-        for (var i = 0; i < addressComp.length; i++) {
-          // addressCompOutput += '<li class="list-group-item">${addressComp[i].types[0]}<strong>${addressComp[i].long_name}</strong></li>';
-          addressCompOutput += '<li class="list-group-item">' + addressComp[i].types[0] + ': <strong>' + addressComp[i].long_name + '</strong></li>';
-        }
-        addressCompOutput += '</ul>';
-        document.getElementById('address').innerHTML = formattedAddress;
-        document.getElementById('address_comp').innerHTML = addressCompOutput;
-
-
-      })
-      .catch(function(error) {
-        console.log(error)
-      })
-  };
-
-
-
-
+  // })
   function geocodeLatLng(coords, geocoderA, map, infowindow) {
 
     // var input = document.getElementById('latlng').value;

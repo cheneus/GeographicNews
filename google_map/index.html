@@ -11,7 +11,7 @@
 
   #map {
     height: 700px;
-    width:auto;
+    width:100%;
   }
   /* Optional: Makes the sample page fill the window. */
 
@@ -23,6 +23,7 @@
     <div class="row">
       <div class="col-md-12">
         <h2>Search!!!</h2>
+        <button id="geolocation">Get Geo</button>
       </div>
       <div id="map">
       </div>
@@ -70,7 +71,9 @@
       'Error: Your browser doesn\'t support geolocation.');
     infoWindow.open(map);
   }
+  $('#geolocation').on('click', function() {
 
+  })
   </script>
   <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD1Uqd8fvNhgRklbA6UVIr5Mmf23Ns0aGA&callback=initMap">
 
