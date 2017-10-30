@@ -1,122 +1,168 @@
 <!DOCTYPE html>
 <html lang="en-us">
+
 <head>
-	<meta charset="UTF-8">
-	<title>Geographic News</title>
-	<!--Reset css-->
-	<link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+    <meta charset="UTF-8">
+    <title>Geographic News</title>
+    <!--Reset css-->
+    <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+    <!--Local css-->
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <!--Bootstrap css-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <!--jQuery library-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-	<!--Local css-->
-  	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
-
-	<!--Bootstrap css-->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
-
-	<!--jQuery library-->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/4.6.0/firebase.js"></script>
+	
+    <!--Google font -->
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
 
 </head>
 
 <body>
-<div class="container">
-<!--Game name-->
-			<div class="row">
-				<div class="col-md-12 center-block" id="masthead">
-					<h1>API Testing</h1>
-				</div>
-			</div>
+    <div class="container">
 
-<!--Rendered buttons will be placed here-->
-			<div class="row">
-				<div class="col-md-2">
-				</div>
-   		 		<div class="col-md-8" id="news-view">
-   		 		</div>
-				<div class="col-md-2">
-				</div>
-			</div>
+        <!-- map -->
+        <div class="row">
+            <div class="col-md-12 center-block">
+            	<div id="map"></div>
+            </div>
+        </div>
 
-<!--Form to allow user to add button to array-->
-			<div class="row">
-				<div class="col-md-12">
-				<form id="emotion-form">
-      				<label for="city-input"></label>
-      				<input id="add-city" type="submit" value="Select A City"><input type="text" id="userCity-input"><br>
-    			</form>
-    			</div>
-			</div>
-			<br>
-  
+        <!--Rendered buttons will be placed here-->
+        <div class="row">
+            <div class="col-md-2">
+            </div>
+            <div class="col-md-8" id="news-view">
+            </div>
+            <div class="col-md-2">
+            </div>
+        </div>
 
-	<div class="container">
+        <div class="row instructions">
 
-		<div id="mapDiv">
-			
-		</div>
+            <div class="col-md-12">
 
-		<div>
-			<p>
+            <p id="youPickedSentence">
+                <span class="step">Step 1:</span> Click a location. You picked
+                <span id="location"> ___________  </span> as your location! 
+            </p>
 
-				You picked
+            <form id="jobTitleSearch">
 
-				<span id="location"></span>
+                <label for="user-input">
+                    <span class="step">Step 2:</span> Search a Job Title
+                </label>
 
-				as your location! Check out the news via journalists and social media.
+                <input type="text" id="user-input">
 
-			</p>
+                <button id="add-job" type="submit">Submit</button>
 
-		</div>
+            </form>
 
-		<div id="titleDiv">
 
-			<p id="leftCollumnTitle"></p>
+            </div>
+        </div>
 
-			<p id="rightCollumnTitle"></p>
+        <div id="titleDiv">
+            <p id="leftCollumnTitle"></p>
+            <p id="rightCollumnTitle"></p>
+        </div>
 
-		</div>
+        <div id="resultContainer">
 
-		<div class="masonry">
+            <!-- left collumn, nyt results !-->
+            <div id="left">
 
-			<div class="item journalismResult" id="item1"></div>
-			<div class="item journalismResult" id="item2"></div>
-			<div class="item journalismResult" id="item3"></div>
-			<div class="item journalismResult" id="item4"></div>
-			<div class="item journalismResult" id="item5"></div>
-			<div class="item journalismResult" id="item7"></div>
-			<div class="item journalismResult" id="item8"></div>
-			<div class="item journalismResult" id="item9"></div>
-			<div class="item journalismResult" id="item10"></div>
+                <div class="glassdoorResultDiv">
 
-			<div class="item twitterResult" id="item11"></div>
-			<div class="item twitterResult" id="item12"></div>
-			<div class="item twitterResult" id="item13"></div>
-			<div class="item twitterResult" id="item14"></div>
-			<div class="item twitterResult" id="item15"></div>
-			<div class="item twitterResult" id="item16"></div>
-			<div class="item twitterResult" id="item17"></div>
-			<div class="item twitterResult" id="item18"></div>
-			<div class="item twitterResult" id="item19"></div>
-			<div class="item twitterResult" id="item20"></div>
+                    <p class="sans glassdoorTitle">Job Title</p>
 
-		</div>
-		
-	</div>
-  
-<!--Gifs will be placed here-->
-			<div class="row">
-				<div class="col-md-2">
-				</div>
-   		 		<div class="col-md-8" id="newsHere">
-   		 		</div>
-				<div class="col-md-2">
-				</div>
-			</div>
-</div>
+                    <p class="sans glassdoorCompany">company</p>
 
-<!--jQuery library-->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+                    <p class="sans glassdoorDescription">
 
-<script type="text/javascript" src="assets/javascript/game.js"></script>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. 
+
+                    </p>
+
+                </div>
+
+                <div class="glassdoorResultDiv">
+
+                    <p class="sans glassdoorTitle">Awesome Job Title</p>
+
+                    <p class="sans glassdoorCompany">the cool company</p>
+
+                    <p class="sans glassdoorDescription">
+
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. 
+
+                    </p>
+
+                </div>
+
+            </div>
+
+            <!-- right collumn, twitter results !-->
+            <div id="right">
+
+                <div class="searchResultDiv">
+
+                    <p class="sans searchTitle">jr jr intern job</p>
+
+                    <p class="sans searchCompany">from mystery</p>
+
+                    <p class="sans searchDescription">
+
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. 
+
+                        Curabitur odio ipsum, porta et malesuada vitae, congue id odio. Pellentesque a luctus quam. Proin at nisi felis. Pellentesque tincidunt elementum purus, ac rhoncus elit viverra sit amet. Aliquam ut porttitor eros. Cras non auctor diam, id gravida nisi. Cras a pulvinar erat, eu eleifend elit. Donec vitae diam feugiat, ultricies purus non, tincidunt ante. Ut consequat arcu id nibh elementum dictum. Sed ac lacus scelerisque, varius nunc eu, egestas metus. Cras varius suscipit tortor eget blandit. In feugiat mattis pharetra. Nulla facilisi. Phasellus dui dolor, tincidunt id nulla quis, pulvinar pellentesque arcu. Fusce suscipit laoreet eleifend. Donec scelerisque placerat dapibus.
+
+                    </p>
+
+                </div>
+
+                <div class="searchResultDiv">
+
+                    <p class="sans searchTitle">Ridiculous Job Title</p>
+
+                    <p class="sans searchCompany">Company</p>
+
+                    <p class="sans searchDescription">
+
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. 
+
+                        Curabitur odio ipsum, porta et malesuada vitae, congue id odio. Pellentesque a luctus quam. Proin at nisi felis. Pellentesque tincidunt elementum purus, ac rhoncus elit viverra sit amet. Aliquam ut porttitor eros. Cras non auctor diam, id gravida nisi. Cras a pulvinar erat, eu eleifend elit. Donec vitae diam feugiat, ultricies purus non, tincidunt ante. Ut consequat arcu id nibh elementum dictum. Sed ac lacus scelerisque, varius nunc eu, egestas metus. Cras varius suscipit tortor eget blandit. In feugiat mattis pharetra. Nulla facilisi. Phasellus dui dolor, tincidunt id nulla quis, pulvinar pellentesque arcu. Fusce suscipit laoreet eleifend. Donec scelerisque placerat dapibus.
+
+                    </p>
+
+                </div>
+            
+            </div>
+
+        </div>
+
+        <!-- <div class="col-6 col-md-3 sidebar-offcanvas" id="sidebar">
+            
+            <div class="list-group">
+
+               dynamically filled with Jquery 
+
+            </div>
+
+        </div> -->
+
+    </div>
+
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD1Uqd8fvNhgRklbA6UVIr5Mmf23Ns0aGA&callback=initMap"></script>
+
+    <!--jQuery library-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="assets/javascript/game.js"></script>
 
 </body>
+
 </html>
