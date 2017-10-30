@@ -1,46 +1,3 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-  <title>Simple click event</title>
-  <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
-  <meta charset="utf-8">
-  <style>
-  /* Always set the map height explicitly to define the size of the div
-       * element that contains the map. */
-
-  #map {
-    height: 700px;
-    width: auto;
-  }
-  /* Optional: Makes the sample page fill the window. */
-
-  </style>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.17.0/axios.min.js"></script>
-</head>
-
-<body>
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-md-12">
-        <h2>Search!!!</h2>
-        <button id="geolocation">Get Geo</button>
-      </div>
-      <div id="map">
-      </div>
-      <div id="address">
-      </div>
-      <div id="address_comp">
-      </div>
-      <div id="longlagDisplay">
-      </div>
-    </div>
-  </div>
-  <script>
-  // Note: This example requires that you consent to location sharing when
-  // prompted by your browser. If you see the error "The Geolocation service
-  // failed.", it means you probably did not give permission for the browser to
-  // locate you.
 
   function initMap() {
      const options = {
@@ -56,8 +13,6 @@
     // creating a map
     let map = new google.maps.Map(document.getElementById('map'), options.start);
     let markerArr;
-   
-
 
     // google.maps.event.addListener(map, 'click', function(event) {
     //   var latLng = event.latLng
@@ -68,17 +23,8 @@
     //   console.log(event)
     // });
 
-    google.maps.event.addListener(map, 'click', function(event) {
-      var latLngInput = event.latLng
-      // var latLngGeo = event
-      addMarker({ coords: latLngInput },
-        // { content: }
-      );
-      console.log("lat: " + latLngInput.lat() + ",lng: " + latLngInput.lng());
-      console.log(event)
-      geocodeLatLng(latLngInput, geocoderA, map, infoWindow)
-    });
 
+    
     function addSample() {
       let markerArr = [{
           coords: { lat: -37.8136, lng: 144.9631 },
@@ -192,10 +138,8 @@
       })
   };
 
-
-
-
-  function geocodeLatLng(coords, geocoderA, map, infowindow) {
+var gmapDo = {
+  getLatLng : function(coords, geocoderA, map, infowindow) {
 
     // var input = document.getElementById('latlng').value;
     // var latlngStr = latLngGeo.split(',', 2);
@@ -219,17 +163,48 @@
       }
     });
   }
+}
 
-  geocode();
+
+  // function geocodeLatLng(coords, geocoderA, map, infowindow) {
+
+  //   // var input = document.getElementById('latlng').value;
+  //   // var latlngStr = latLngGeo.split(',', 2);
+  //   var latlng = { lat: parseFloat(coords.lat()), lng: parseFloat(coords.lng()) };
+  //   // var latlng = { lat: parseFloat(latlngStr[0]), lng: parseFloat(latlngStr[1]) };
+  //   geocoderA.geocode({ 'location': latlng }, function(results, status) {
+  //     if (status === 'OK') {
+  //       if (results[0]) {
+  //         // map.setZoom(11);
+  //         var marker = new google.maps.Marker({
+  //           position: latlng,
+  //           map: map
+  //         });
+  //         infowindow.setContent(results[0].formatted_address);
+  //         infowindow.open(map, marker);
+  //       } else {
+  //         window.alert('No results found');
+  //       }
+  //     } else {
+  //       window.alert('Geocoder failed due to: ' + status);
+  //     }
+  //   });
+  // }
+
+google.maps.event.addListener(map, 'click', function(event) {
+      var latLngInput = event.latLng
+      // var latLngGeo = event
+      addMarker({ coords: latLngInput },
+        // { content: }
+      );
+      console.log("lat: " + latLngInput.lat() + ",lng: " + latLngInput.lng());
+      console.log(event)
+      geocodeLatLng(latLngInput, geocoderA, map, infoWindow)
+    });
+
+
+  // geocode();
   // $('#geolocation').on('click', function() {
 
   // })
  };
-  </script>
-  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD1Uqd8fvNhgRklbA6UVIr5Mmf23Ns0aGA&callback=initMap">
-
-
-  </script>
-</body>
-
-</html>
