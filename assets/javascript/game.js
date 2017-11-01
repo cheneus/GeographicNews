@@ -1,54 +1,91 @@
-    //Global variables for news and twitter
-    var nyTimes;
-    var twitter;
-    var latLocation;
-    var longLocation;
+//---------------------Firebase--------------------------------------//
+  var config = {
+    apiKey: "AIzaSyAuR6SOo3-eO7apiuHGGI8Ga_D9l_gWDa8",
+    authDomain: "group-project-1-50c82.firebaseapp.com",
+    databaseURL: "https://group-project-1-50c82.firebaseio.com",
+    projectId: "group-project-1-50c82",
+    storageBucket: "",
+    messagingSenderId: "345184424946"
+  };
 
-      //Function to generate initial buttons from emotions array
-      function news() {
-        //Deleting the emotions prior to adding new emotions
-        $("#news-view").empty();
-        //Loop to go through the values in the emotions array
-        for (var i = 0; i <                                                ; i++) {
-          //Then dynamically create a <button> element for each
-          var a = $("<div>");
-          //Adding a class of emotion to the button
-          a.addClass("newsClass");
-          //Adding a data-attribute
-          a.attr("data-news",                                        [i]);
-          //Providing the initial button text
-          a.text(emotions[i]);
-          //Add the button to the HTML
-          $("#news-view").append(a);
-        }
-      };
+  firebase.initializeApp(config);
 
-      //Call to create buttons
-      news();
+var database = firebase.database();
 
+$("#add-job").on('click', function(){
+event.preventDefault();
 
-/*---------AJAX call to access API and return still gifs----------*/
-    
-    //Event listener to all buttons
-    $(document.body).on("click", ".emotion", function() {
-    //Create variable to hold the data from the button clicked to
-    //search in the API. Return is limited to 10
+  //grab user input
+  var newJob = $("#user-input").val().trim();
 
-  $.get("https://api.nytimes.com/svc/search/v2/articlesearch.json?", {api_key:"097ee9426aa547eebab73b606dba9719", 
-  + $.param ({
-    'latitude': "latLocation",
-    'longitude': "longLocation"
-});, limit:"10"}).done(function(response){
+  database.ref("jobs").push(newJob);
+  console.log(newJob);
 
-    //AJAX call to request gifs from API
+  //clear field of user input
+  $("#user-input").val("");
+
+});
+
+$("#map").on('click', function(){
+event.preventDefault();
+
+  //grab user location selection
+  var newLocation = $('#location').val().trim();
+
+  database.ref("locations").push(newLocation);
+
+});
+
+//Call to NYTimes to get articles
+function getLocation(event) {
+//   event.preventdefault();
+    console.log("it worked");
+var queryURL = "https://cors-anywhere.herokuapp.com/https://api.nytimes.com/svc/search/v2/articlesearch.json";
+  queryURL += '?' + $.param({
+    'api-key': "01779c7ce4234a8ab3ac8c8c29f9eeba",
+    'latitude': "41.881832",
+    'longitude': "-87.623177"
+      })
+    //Ajax call
       $.ajax({
         url: queryURL,
         method: "GET"
-      }).done(function(response) { 
-    //After data comes back console.log to see what return is
-    //recieved from the API
-          console.log(queryURL);
-          console.log(response);
+      }).done(function(r) {
+    //Console.log data received
+          //console.log(queryURL);
+          console.log(r);
     //Once data is returned store the results in a variable
-    var results = response.data;
+    var nyResults = r.response.docs;
+          console.log(r.response)
+    for (var i = 0; i < nyResults.length; i++) {
+      var articles = $("<div>");
+        articles.addClass("news");
+        articles.attr("id", "newsSpot");
+        $(".journalismContent").append(articles);
 
+      //Add headline
+      if (nyResults[i].headline.main !== "null") {
+        $("#newsSpot").append("<h6 class='articleHeadline'>" + nyResults[i].headline.main);
+        // Log the first article's headline to console
+        console.log(nyResults[i].headline.main);
+        };
+
+      var date = moment('nyResults[i].pub_date', 'YYYY-DD-MMTHH:mm:ss.000').format('MM-DD-YYYY');
+
+      //Add article date and URL
+      $("#newsSpot").append("<h7>" + date + "</h7>" +
+          nyResults[i].web_url + "</a>"
+        );
+
+      //Add snippet
+      if (nyResults[i].snippet && nyResults[i].snippet) {
+        $("#newsSpot").append("<h7 class='articleSnippet'>" + nyResults[i].snippet + "</h7>");
+      };
+
+    };
+  });
+};
+
+//-----------------------------NYTimes-------------------------------------//
+//NYTimes
+  $("#location").on("click", getLocation());

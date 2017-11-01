@@ -1,0 +1,244 @@
+/* global variables -------------------------------------- */
+
+body, html {
+  margin: 0;
+  margin-top: 1vh;
+  overflow: hidden;
+}
+
+/* from scroll css tutorial */
+*, *:before, *:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.sans {
+	font-family: 'Raleway', sans-serif;
+}
+
+.serif {
+font-family: 'Playfair Display', serif;
+}
+
+/* top divs ------------------------------------------------ */
+
+#map {
+	width: auto;
+  	height: 30vh;
+}
+
+.instructions {
+	height: 19vh;
+}
+
+#youPickedSentence {
+	font-size: 4vh;
+	text-align: center;
+	margin: 3vh 0vh 2vh 0vh;
+}
+
+#searchBar {
+	font-size: 3vh;
+	text-align: center;
+	margin: 3vh 0vh 3vh 0vh;
+}
+
+#add-search {
+	margin-left: 15px;
+	background-color: white;
+	border-radius: 5px;
+	color: gray;
+}
+
+.step {
+	background-color: #4DA64F;
+	color: white;
+	padding: 0px 8px 3px 8px;
+	margin-right: 8px;
+	border-radius: 5px;
+}
+
+/* results ------------------------------------------------- */
+
+#resultContainer {
+	margin: 0;
+	height: 48vh;
+}
+
+#left {
+  position: relative;
+  float: left;
+  width: 50%;
+  height: 98%;
+  overflow: scroll;  
+  border-top: .5px solid rgba(50, 50, 30, .7);
+  margin-bottom: 15px;
+}
+
+#right {
+  position: relative;
+  float: left;
+  overflow: scroll;
+  width: 50%;
+  height: 98%;
+  border-top: .5px solid rgba(50, 100, 150, .7);
+  margin-bottom: 15px;
+}
+
+/* --------- left, journalism --------- */ 
+.journalismResultDiv {
+	margin: 20px 25px 20px 25px;
+	padding: 5px 15px 5px 15px;
+	background-color: white;
+	border-bottom: .5px solid rgba(50, 50, 50, .2);
+
+}
+
+.journalismTitle {
+	font-weight: bold;
+	margin: 10px 0px 1px 0px;
+	font-size: 18px;
+}
+
+.journalismAuthor {
+	font-size: 12px;
+	color: gray;
+	margin: 0px 0px 3px 0px;
+    text-transform: uppercase;
+}
+
+.journalismContent {
+	font-size: 14px;
+}
+
+
+/* -------- right, media ---------- */ 
+.mediaResultDiv {
+	margin: 20px 25px 20px 25px;
+	padding: 5px 15px 5px 15px;
+	background-color: white;
+	border-bottom: .5px solid rgba(50, 50, 50, .2);
+
+}
+
+.mediaTitle {
+	font-weight: bold;
+	margin: 10px 0px 1px 0px;
+	font-size: 18px;
+}
+
+.mediaAuthor {
+	font-size: 12px;
+	color: gray;
+	margin: 0px 0px 3px 0px;
+    text-transform: uppercase;
+}
+
+.mediaContent {
+	font-size: 14px;
+}
+
+
+/* -------------------------- media queries --------------------------- */
+@media screen and (max-width: 1215px) {
+		#youPickedSentence {
+			font-size: 3vh;
+			text-align: center;
+			margin: 3vh 0vh 2vh 0vh;
+		}
+
+		#searchBar {
+			font-size: 2vh;
+			text-align: center;
+			margin: 3vh 0vh 3vh 0vh;
+		}
+
+
+}
+
+@media screen and (max-width: 768px) {
+		#youPickedSentence {
+			font-size: 2.5vh;
+			text-align: center;
+			margin: 3vh 0vh 2vh 0vh;
+		}
+
+		#searchBar {
+			font-size: 2vh;
+			text-align: center;
+			margin: 3vh 0vh 3vh 0vh;
+		}
+
+}
+
+@media screen and (max-width: 640px) {
+
+/*  top divs */ 
+	#map {
+		width: auto;
+	  	height: 26vh;
+	}
+
+	.instructions {
+		height: 23vh;
+	}
+
+	#add-search {
+		margin-left: 5px;
+		padding-left: 4px;
+	}
+
+/*  result divs and text size */ 
+
+	.journalismResultDiv {
+		margin: 15px 25px 5px 25px;
+		padding: 5px 15px 5px 15px;
+		background-color: white;
+		border-bottom: .5px solid rgba(50, 50, 50, .2);
+
+	}
+
+	.journalismTitle {
+		font-weight: bold;
+		margin: 5px 0px 1px 0px;
+		font-size: 14px;
+	}
+
+	.journalismAuthor {
+		font-size: 10px;
+		color: gray;
+		margin: 0px 0px 3px 0px;
+	    text-transform: uppercase;
+	}
+
+	.journalismContent {
+		font-size: 10px;
+	}
+
+	.mediaResultDiv {
+		margin: 15px 25px 5px 25px;
+		padding: 5px 15px 5px 15px;
+		background-color: white;
+		border-bottom: .5px solid rgba(50, 50, 50, .2);
+
+	}
+
+	.mediaTitle {
+		font-weight: bold;
+		margin: 5px 0px 1px 0px;
+		font-size: 14px;
+	}
+
+	.mediaAuthor {
+		font-size: 10px;
+		color: gray;
+		margin: 0px 0px 3px 0px;
+	    text-transform: uppercase;
+	}
+
+	.mediaContent {
+		font-size: 10px;
+	}
+
+}
