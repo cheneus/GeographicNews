@@ -21,14 +21,6 @@ body, html {
 font-family: 'Playfair Display', serif;
 }
 
-/*
-.list-group-item.active {
-    z-index: 2;
-    color: #fff;
-    background-color: #007bff;
-    border-color: #007bff;
-} */
-
 /* top divs ------------------------------------------------ */
 
 #map {
@@ -182,6 +174,48 @@ font-family: 'Playfair Display', serif;
 
 @media screen and (max-width: 640px) {
 
+/*  top divs */ 
+	#map {
+		width: auto;
+	  	height: 26vh;
+	}
+
+	.instructions {
+		height: 23vh;
+	}
+
+	#add-search {
+		margin-left: 5px;
+		padding-left: 4px;
+	}
+
+/*  result divs and text size */ 
+
+	.journalismResultDiv {
+		margin: 15px 25px 5px 25px;
+		padding: 5px 15px 5px 15px;
+		background-color: white;
+		border-bottom: .5px solid rgba(50, 50, 50, .2);
+
+	}
+
+	.journalismTitle {
+		font-weight: bold;
+		margin: 5px 0px 1px 0px;
+		font-size: 14px;
+	}
+
+	.journalismAuthor {
+		font-size: 10px;
+		color: gray;
+		margin: 0px 0px 3px 0px;
+	    text-transform: uppercase;
+	}
+
+	.journalismContent {
+		font-size: 10px;
+	}
+
 	.mediaResultDiv {
 		margin: 15px 25px 5px 25px;
 		padding: 5px 15px 5px 15px;
@@ -205,11 +239,6 @@ font-family: 'Playfair Display', serif;
 
 	.mediaContent {
 		font-size: 10px;
-	}
-
-	#add-search {
-		margin-left: 5px;
-		padding-left: 4px;
 	}
 
 }
