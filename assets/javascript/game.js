@@ -43,8 +43,8 @@ function getLocation(event) {
 var queryURL = "https://cors-anywhere.herokuapp.com/https://api.nytimes.com/svc/search/v2/articlesearch.json";
   queryURL += '?' + $.param({
     'api-key': "01779c7ce4234a8ab3ac8c8c29f9eeba",
-    'latitude': "41.881832",
-    'longitude': "-87.623177"
+    'latitude': "latLngInput.lat()",
+    'longitude': "latLngInput.lng()"
       })
     //Ajax call
       $.ajax({
