@@ -23,6 +23,11 @@
     <!-- map -->
     <div class="row">
       <div class="col-md-12 center-block">
+        <div id="floating-panel">
+          <input onclick="clearMarkers();" type=button value="Hide Markers">
+          <input onclick="getCounted();" type=button value="Show All Markers">
+          <input onclick="deleteMarkers();" type=button value="Delete Markers">
+        </div>
         <div id="map"></div>
       </div>
     </div>
@@ -107,12 +112,13 @@
 
         </div> -->
   </div>
-  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD1Uqd8fvNhgRklbA6UVIr5Mmf23Ns0aGA&callback=initMap"></script>
   <!--jQuery library-->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.17.0/axios.min.js"></script>
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD1Uqd8fvNhgRklbA6UVIr5Mmf23Ns0aGA&callback=initMap"></script>
   <script type="text/javascript" src="assets/javascript/game.js"></script>
   <script type="text/javascript" src="assets/javascript/map.js"></script>
+    <script type="text/javascript" src="assets/javascript/counted.js"></script>
 </body>
 
 </html>
