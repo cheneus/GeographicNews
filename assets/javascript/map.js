@@ -1,21 +1,13 @@
 var map, markers = [];
 
 function initMap() {
-  const options = {
-    start: {
-      center: { lat: -34.397, lng: 150.644 },
-      zoom: 6
-    }
-  };
-
   var infoWindow = new google.maps.InfoWindow;
   var geocoder = new google.maps.Geocoder;
   // creating a map
-  var haightAshbury = { lat: 37.769, lng: -122.446 };
+  var haightAshbury = { lat: 39.0997, lng: -94.5786 };
   map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 12,
-    center: haightAshbury,
-    mapTypeId: 'terrain'
+    zoom: 8,
+    center:{ lat: 39.0997, lng: -94.5786 },
   });
 
   google.maps.event.addListener(map, 'click', function(event) {
@@ -31,46 +23,12 @@ function initMap() {
     gmapDo.getLatLng(latLngInput, geocoder, map, infoWindow)
 
   });
-
-
-  gmapDo.getGeocode();
-  // $('#geolocation').on('click', function() {
-
-  // })
-};
-
-function addSample() {
-  var markers = [{
-      coords: { lat: -37.8136, lng: 144.9631 },
-      content: "Melbourne"
-    },
-    {
-      coords: { lat: -41.2865, lng: 174.7762 },
-      content: "Wellington"
-    }
-  ]
-  // addMarker({
-  //   coords: { lat: -37.8136, lng: 144.9631 },
-  //   content: "Melbourne"
-  // });
-};
-// marker
-// var marker =  new google.maps.Marker({
-//   position:{lat:33.8688, lng:151.2093},
-//   map:map,
-// })
-// Try HTML5 geolocation.
-function browserGeocode() {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position) {
       var pos = {
         lat: position.coords.latitude,
         lng: position.coords.longitude
       };
-
-      infoWindow.setPosition(pos);
-      infoWindow.setContent('Location found.');
-      infoWindow.open(map);
       map.setCenter(pos);
     }, function() {
       handleLocationError(true, infoWindow, map.getCenter());
@@ -79,7 +37,15 @@ function browserGeocode() {
     // Browser doesn't support Geolocation
     handleLocationError(false, infoWindow, map.getCenter());
   }
-}
+  // $('#geolocation').on('click', function() {
+
+  // })
+};
+
+// function browserGeocode() {
+  
+// }
+
 
 function handleLocationError(browserHasGeolocation, infoWindow, pos) {
   infoWindow.setPosition(pos);
