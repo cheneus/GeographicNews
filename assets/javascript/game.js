@@ -38,13 +38,12 @@ event.preventDefault();
 
 //Call to NYTimes to get articles
 function getLocation(event) {
-//   event.preventdefault();
-    console.log("it worked");
+    //console.log("Article call is firing");
 var queryURL = "https://cors-anywhere.herokuapp.com/https://api.nytimes.com/svc/search/v2/articlesearch.json";
   queryURL += '?' + $.param({
     'api-key': "01779c7ce4234a8ab3ac8c8c29f9eeba",
-    'latitude': "41.908920474735154",
-    'longitude': "-87.769775390625"
+    'latitude': "41.881832",
+    'longitude': "-87.623177"
       })
     //Ajax call
       $.ajax({
@@ -61,21 +60,17 @@ var queryURL = "https://cors-anywhere.herokuapp.com/https://api.nytimes.com/svc/
       var articles = $("<div>");
         articles.addClass("news");
         articles.attr("id", "newsSpot");
-        $(".journalismResultsDiv").append(articles);
+        $(".journalismContent").append(articles);
 
-      //Add headline
+      //Add headline as link to article
       if (nyResults[i].headline.main !== "null") {
-        $("#newsSpot").append("<h6 class='journalismTitle'>" + nyResults[i].headline.main);
+        $("#newsSpot").append("<h6 class='articleHeadline'>" + nyResults[i].headline.main);
         // Log the first article's headline to console
         console.log(nyResults[i].headline.main);
         };
-      if (nyResults[i].byline.original) {
-        $("newsSpot").append("<h7 class='jounralismAuthor'>");
-      }
 
-      //HELP
-      var date = moment('nyResults[i].pub_date', 'YYYY-DD-MMTHH:mm:ss.000').format('MM-DD-YYYY');
-
+      var date = (moment(nyResults[i].pub_date, 'YYYY-DD-MMTHH:mm:ss.000').format('MM-DD-YYYY'));
+      //console.log(date);
       //Add article date and URL
       $("#newsSpot").append("<h7>" + date + "</h7>" +
           nyResults[i].web_url + "</a>"
@@ -83,7 +78,7 @@ var queryURL = "https://cors-anywhere.herokuapp.com/https://api.nytimes.com/svc/
 
       //Add snippet
       if (nyResults[i].snippet && nyResults[i].snippet) {
-        $("#newsSpot").append("<h7 class='journalismContent'>" + nyResults[i].snippet + "</h7>");
+        $("#newsSpot").append("<h7 class='articleSnippet'>" + nyResults[i].snippet + "</h7>");
       };
 
     };
