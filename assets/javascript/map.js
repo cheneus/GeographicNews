@@ -19,24 +19,17 @@ function initMap() {
   });
 
   google.maps.event.addListener(map, 'click', function(event) {
-    var latLngInput = event.latLng
-    //   addMarker({ coords: latLngInput },
-    //     // { content: }
+    var latLngInput = event.latLng;
+    var lat = latLngInput.lat();
+    var lng = latLngInput.lng();
 
-    //   );
+    getLocation(lat, lng);
 
-    //   // gMarker.display();
     console.log("lat: " + latLngInput.lat() + ",lng: " + latLngInput.lng());
     console.log(event)
     gmapDo.getLatLng(latLngInput, geocoder, map, infoWindow)
 
   });
-
-
-  gmapDo.getGeocode();
-  // $('#geolocation').on('click', function() {
-
-  // })
 };
 
 function addSample() {
@@ -190,8 +183,8 @@ var gmapDo = {
         addressCompOutput += '</ul>';
         console.log(formattedAddress);
         console.log(addressCompOutput);
-        document.getElementById('address').innerHTML = formattedAddress;
-        document.getElementById('address_comp').innerHTML = addressCompOutput;
+        // document.getElementById('address').innerHTML = formattedAddress;
+        // document.getElementById('address_comp').innerHTML = addressCompOutput;
 
 
       })

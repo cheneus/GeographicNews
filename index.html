@@ -23,6 +23,10 @@
   <div class="container">
     <!-- map -->
     <div class="row">
+      <!-- <div id="regions_div" style="width: 100%; height: 500px;"></div> -->
+      <div id="chart_div"></div>
+    </div>
+    <div class="row">
       <div class="col-md-12 center-block">
         <div id="map"></div>
       </div>
@@ -95,10 +99,24 @@
   <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD1Uqd8fvNhgRklbA6UVIr5Mmf23Ns0aGA&callback=initMap"></script>
   <!--jQuery library-->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.17.0/axios.min.js"></script>
   <script type="text/javascript" src="assets/javascript/game.js"></script>
   <script type="text/javascript" src="assets/javascript/map.js"></script>
+  <script type="text/javascript" src="assets/javascript/chart.js"></script>
   <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
   <script type="text/javascript" src="assets/javascript/counted.js"></script>
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script type="text/javascript">
+  google.charts.load('current', {
+    'packages': ['geochart'],
+    // Note: you will need to get a mapsApiKey for your project.
+    // See: https://developers.google.com/chart/interactive/docs/basic_load_libs#load-settings
+  });
+  // google.charts.setOnLoadCallback(drawRegionsMap);
+  google.charts.load('current', {'packages':['corechart']});
+  // google.charts.setOnLoadCallback(drawChart);
+  google.charts.setOnLoadCallback(drawStatesMap);
+  </script>
 </body>
 
 </html>
