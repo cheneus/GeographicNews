@@ -168,7 +168,12 @@ function initMap() {
   }
 
   google.maps.event.addListener(map, 'click', function(event) {
-    var latLngInput = event.latLng
+    var latLngInput = event.latLng;
+    var lat = latLngInput.lat();
+    console.log(lat);
+    var lon = latLngInput.lng();
+    console.log(lon);
+    getLocation(lat, lon);
     // var latLngGeo = event
     addMarker({ coords: latLngInput },
       // { content: }

@@ -37,13 +37,13 @@ event.preventDefault();
 });
 
 //Call to NYTimes to get articles
-function getLocation(event) {
+function getLocation(lat, lon) {
     //console.log("Article call is firing");
 var queryURL = "https://cors-anywhere.herokuapp.com/https://api.nytimes.com/svc/search/v2/articlesearch.json";
   queryURL += '?' + $.param({
     'api-key': "01779c7ce4234a8ab3ac8c8c29f9eeba",
-    'latitude': "41.881832",
-    'longitude': "-87.623177"
+    'latitude': lat,
+    'longitude': lon
       })
     //Ajax call
       $.ajax({
@@ -87,4 +87,4 @@ var queryURL = "https://cors-anywhere.herokuapp.com/https://api.nytimes.com/svc/
 
 //-----------------------------NYTimes-------------------------------------//
 //NYTimes
-  $("#location").on("click", getLocation());
+//  $("#location").on("click", getLocation());
