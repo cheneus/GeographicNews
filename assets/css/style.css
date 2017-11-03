@@ -110,17 +110,6 @@ body, html {
 	color: rgb(70, 90, 205);
 }
 
-#arrowLeft {
-	padding-left: 10px;
-}
-
-#arrowRight {
-	padding-right: 10px;
-	-ms-transform: rotate(-90deg); /* IE 9 */
-    -webkit-transform: rotate(-90deg); /* Chrome, Safari, Opera */
-    transform: rotate(-90deg);
-}
-
 #left {
   clear: both;
   float: left;
