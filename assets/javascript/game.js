@@ -36,9 +36,12 @@ event.preventDefault();
 
 });
 
+
+  var userSearch = user-input;
+
 //Call to NYTimes to get articles
 function getLocation(lat, lon) {
-    //console.log("Article call is firing");
+//console.log("Article call is firing");
 var queryURL = "https://cors-anywhere.herokuapp.com/https://api.nytimes.com/svc/search/v2/articlesearch.json";
   queryURL += '?' + $.param({
     'api-key': "01779c7ce4234a8ab3ac8c8c29f9eeba",
@@ -64,21 +67,21 @@ var queryURL = "https://cors-anywhere.herokuapp.com/https://api.nytimes.com/svc/
 
       //Add headline as link to article
       if (nyResults[i].headline.main !== "null") {
-        $("#newsSpot").append("<h6 class='articleHeadline'>" + nyResults[i].headline.main);
+        $("#newsSpot").append("<h6 class='journalismTitle'><a href='"+nyResults[i].web_url+"' target='_blank'>" + nyResults[i].headline.main + '</h6>');
         // Log the first article's headline to console
         console.log(nyResults[i].headline.main);
         };
 
       var date = (moment(nyResults[i].pub_date, 'YYYY-DD-MMTHH:mm:ss.000').format('MM-DD-YYYY'));
       //console.log(date);
-      //Add article date and URL
-      $("#newsSpot").append("<h7>" + date + "</h7>" +
-          nyResults[i].web_url + "</a>"
-        );
 
+      //Add author and date
+      if (nyResults[i].byline.original !== "null") {
+      $("#newsSpot").append("<h7 class='journalismAuthor'>" + nyResults[i].byline.original + '<br>' + date + '<br>' + "</h7>");
+        };
       //Add snippet
       if (nyResults[i].snippet && nyResults[i].snippet) {
-        $("#newsSpot").append("<h7 class='articleSnippet'>" + nyResults[i].snippet + "</h7>");
+        $("#newsSpot").append("<h7 class='journalismContent'>" + nyResults[i].snippet + "</h7>");
       };
 
     };
