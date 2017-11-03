@@ -7,11 +7,11 @@ function initMap() {
   var haightAshbury = { lat: 39.0997, lng: -94.5786 };
   map = new google.maps.Map(document.getElementById('map'), {
     zoom: 8,
-    center:{ lat: 39.0997, lng: -94.5786 },
+    center: { lat: 39.0997, lng: -94.5786 },
   });
 
   google.maps.event.addListener(map, 'click', function(event) {
-   var latLngInput = event.latLng;
+    var latLngInput = event.latLng;
     var lat = latLngInput.lat();
     console.log(lat);
     var lon = latLngInput.lng();
@@ -21,8 +21,6 @@ function initMap() {
     addMarker({ coords: latLngInput },
       // { content: }
     );
-    console.log("lat: " + latLngInput.lat() + ",lng: " + latLngInput.lng());
-    console.log(event)
     gmapDo.getLatLng(latLngInput, geocoder, map, infoWindow)
 
   });
@@ -45,7 +43,7 @@ function initMap() {
 
 
 
-    
+
 
 function handleLocationError(browserHasGeolocation, infoWindow, pos) {
   infoWindow.setPosition(pos);
@@ -159,13 +157,12 @@ var gmapDo = {
         console.log(addressCompOutput);
         // document.getElementById('address').innerHTML = formattedAddress;
         // document.getElementById('address_comp').innerHTML = addressCompOutput;
-
-
       })
       .catch(function(error) {
         console.log(error)
       })
   }
+
 }
 
 $('#add-search').on('click', gmapDo.getGeocode)

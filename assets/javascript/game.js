@@ -12,20 +12,6 @@
 
 var database = firebase.database();
 
-// $("#add-job").on('click', function(){
-// event.preventDefault();
-
-//   //grab user input
-//   var newJob = $("#user-input").val().trim();
-
-//   database.ref("jobs").push(newJob);
-//   console.log(newJob);
-
-//   //clear field of user input
-//   $("#user-input").val("");
-
-// });
-
 $("#map").on('click', function(){
 event.preventDefault();
 
@@ -36,15 +22,15 @@ event.preventDefault();
 
 });
 
-//Call to NYTimes to get articles
-function getLocation(event) {
-//   event.preventdefault();
-    console.log("it worked");
+
+//-----------------------------NYTimes GEO API call-------------------------------------//
+function getLocation(lat, lon) {
+//console.log("Article call is firing");
 var queryURL = "https://cors-anywhere.herokuapp.com/https://api.nytimes.com/svc/search/v2/articlesearch.json";
   queryURL += '?' + $.param({
     'api-key': "01779c7ce4234a8ab3ac8c8c29f9eeba",
-    'latitude': "41.881832",
-    'longitude': "-87.623177"
+    'latitude': lat,
+    'longitude': lon
       })
     //Ajax call
       $.ajax({
@@ -63,29 +49,76 @@ var queryURL = "https://cors-anywhere.herokuapp.com/https://api.nytimes.com/svc/
         articles.attr("id", "newsSpot");
         $(".journalismContent").append(articles);
 
-      //Add headline
+      //Add headline as link to article
       if (nyResults[i].headline.main !== "null") {
-        $("#newsSpot").append("<h6 class='articleHeadline'>" + nyResults[i].headline.main);
+        $("#newsSpot").append("<h6 class='journalismTitle'><a href='" + nyResults[i].web_url + "' target='_blank'>" + nyResults[i].headline.main + '</h6>');
         // Log the first article's headline to console
         console.log(nyResults[i].headline.main);
         };
 
-      var date = moment('nyResults[i].pub_date', 'YYYY-DD-MMTHH:mm:ss.000').format('MM-DD-YYYY');
+      var date = (moment(nyResults[i].pub_date, 'YYYY-DD-MMTHH:mm:ss.000').format('MM-DD-YYYY'));
+      //console.log(date);
 
-      //Add article date and URL
-      $("#newsSpot").append("<h7>" + date + "</h7>" +
-          nyResults[i].web_url + "</a>"
-        );
-
+      //Add author and date
+      if (nyResults[i].byline.original !== "null") {
+      $("#newsSpot").append("<h7 class='journalismAuthor'>" + nyResults[i].byline.original + '<br>' + date + '<br>' + "</h7>");
+        };
       //Add snippet
       if (nyResults[i].snippet && nyResults[i].snippet) {
-        $("#newsSpot").append("<h7 class='articleSnippet'>" + nyResults[i].snippet + "</h7>");
+        $("#newsSpot").append("<h7 class='journalismContent'>" + nyResults[i].snippet + "</h7>");
       };
 
     };
   });
 };
 
-//-----------------------------NYTimes-------------------------------------//
-//NYTimes
-  $("#location").on("click", getLocation());
+// //-----------------------------NYTimes Search API-------------------------------------//
+//   var userSearch = $("#user-input");
+
+
+//   function getLocation(userSearch) {
+// //console.log("Article call is firing");
+// var queryURL = "https://cors-anywhere.herokuapp.com/https://api.nytimes.com/svc/search/v2/articlesearch.json";
+//   queryURL += '?' + $.param({
+//     'api-key': "01779c7ce4234a8ab3ac8c8c29f9eeba",
+//     'q': userSearch,
+//       })
+//     //Ajax call
+//       $.ajax({
+//         url: queryURL,
+//         method: "GET"
+//       }).done(function(r) {
+//     //Console.log data received
+//           //console.log(queryURL);
+//           console.log(r);
+//     //Once data is returned store the results in a variable
+//     var nySearch = r.response.docs;
+//           console.log(r.response)
+//     for (var i = 0; i < nySearch.length; i++) {
+//       var articles = $("<div>");
+//         articles.addClass("news");
+//         articles.attr("id", "newsSpot");
+//         $(".mediaContent").append(articles);
+
+//       //Add headline as link to article
+//       if (nySearch[i].headline.main !== "null") {
+//         $("#newsSpot").append("<h6 class='mediaTitle'><a href='" + nySearch[i].web_url + "' target='_blank'>" + nySearch[i].headline.main + '</h6>');
+//         // Log the first article's headline to console
+//         console.log(nySearch[i].headline.main);
+//         };
+
+//       var date = (moment(nySearch[i].pub_date, 'YYYY-DD-MMTHH:mm:ss.000').format('MM-DD-YYYY'));
+//       //console.log(date);
+
+//       //Add author and date
+//       if (nySearch[i].byline.original !== "null") {
+//       $("#newsSpot").append("<h7 class='mediaAuthor'>" + nySearch[i].byline.original + '<br>' + date + '<br>' + "</h7>");
+//         };
+//       //Add snippet
+//       if (nySearch[i].snippet && nySearch[i].snippet) {
+//         $("#newsSpot").append("<h7 class='mediaContent'>" + nySearch[i].snippet + "</h7>");
+//       };
+
+//     };
+//   });
+// };
