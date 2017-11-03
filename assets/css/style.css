@@ -2,8 +2,8 @@
 
 body, html {
   margin: 0;
-  margin-top: 1vh;
   overflow: hidden;
+  background-image: url("../images/topography.png");
 }
 
 /* from scroll css tutorial */
@@ -13,12 +13,40 @@ body, html {
   box-sizing: border-box;
 }
 
+.container {
+	background-color: rgba(256, 256, 256, .4);
+}
+
 .sans {
 	font-family: 'Raleway', sans-serif;
 }
 
 .serif {
-font-family: 'Playfair Display', serif;
+	font-family: 'Playfair Display', serif;
+}
+
+#title {
+	background-color: rgb(41, 128, 185);
+	color: white;
+	font-size: 3vh;
+	height: 4.8vh;
+	margin-bottom: .2vh;
+	vertical-align: middle;
+	line-height: 5vh;
+	font-weight: bold;
+	position: relative;   
+}
+
+#newspaperIcon {
+	width: 2.3vh;
+	height: 2.3vh;
+	margin: 0px 10px 0px 2.5%;
+}
+
+#placeholderMenu {
+	text-align: right;
+	position: absolute;
+	right: 20px;
 }
 
 /* top divs ------------------------------------------------ */
@@ -54,7 +82,7 @@ font-family: 'Playfair Display', serif;
 .step {
 	background-color: #4DA64F;
 	color: white;
-	padding: 0px 8px 3px 8px;
+	padding: 2px 8px 3px 8px;
 	margin-right: 8px;
 	border-radius: 5px;
 }
@@ -63,26 +91,52 @@ font-family: 'Playfair Display', serif;
 
 #resultContainer {
 	margin: 0;
-	height: 48vh;
+	height: 44vh;
+	position: relative;
+	width: 100%;
+}
+
+#leftColumnTitle {
+	position: absolute;
+	left: -2px;
+	top: -25px;
+	color: rgb(70, 90, 205);
+}
+
+#rightColumnTitle {
+	position: absolute;
+	right: -2px;
+	top: -25px;
+	color: rgb(70, 90, 205);
+}
+
+#arrowLeft {
+	padding-left: 10px;
+}
+
+#arrowRight {
+	padding-right: 10px;
+	-ms-transform: rotate(-90deg); /* IE 9 */
+    -webkit-transform: rotate(-90deg); /* Chrome, Safari, Opera */
+    transform: rotate(-90deg);
 }
 
 #left {
-  position: relative;
+  clear: both;
   float: left;
   width: 50%;
   height: 98%;
   overflow: scroll;  
-  border-top: .5px solid rgba(50, 50, 30, .7);
+  border-top: .5px solid rgba(70, 90, 205, .5);
   margin-bottom: 15px;
 }
 
 #right {
-  position: relative;
   float: left;
   overflow: scroll;
   width: 50%;
   height: 98%;
-  border-top: .5px solid rgba(50, 100, 150, .7);
+  border-top: .5px solid rgba(0, 0, 71, .5);
   margin-bottom: 15px;
 }
 
@@ -119,7 +173,6 @@ font-family: 'Playfair Display', serif;
 	padding: 5px 15px 5px 15px;
 	background-color: white;
 	border-bottom: .5px solid rgba(50, 50, 50, .2);
-
 }
 
 .mediaTitle {
@@ -168,6 +221,11 @@ font-family: 'Playfair Display', serif;
 			font-size: 2vh;
 			text-align: center;
 			margin: 3vh 0vh 3vh 0vh;
+		}
+
+		#leftColumnTitle,
+		#rightColumnTitle {
+			font-size: 10px;
 		}
 
 }
