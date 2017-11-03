@@ -11,18 +11,22 @@ function initMap() {
   });
 
   google.maps.event.addListener(map, 'click', function(event) {
-    var latLngInput = event.latLng
-    //   addMarker({ coords: latLngInput },
-    //     // { content: }
-
-    //   );
-
-    //   // gMarker.display();
+   var latLngInput = event.latLng;
+    var lat = latLngInput.lat();
+    console.log(lat);
+    var lon = latLngInput.lng();
+    console.log(lon);
+    getLocation(lat, lon);
+    // var latLngGeo = event
+    addMarker({ coords: latLngInput },
+      // { content: }
+    );
     console.log("lat: " + latLngInput.lat() + ",lng: " + latLngInput.lng());
     console.log(event)
     gmapDo.getLatLng(latLngInput, geocoder, map, infoWindow)
 
   });
+
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position) {
       var pos = {
@@ -37,15 +41,11 @@ function initMap() {
     // Browser doesn't support Geolocation
     handleLocationError(false, infoWindow, map.getCenter());
   }
-  // $('#geolocation').on('click', function() {
-
-  // })
 };
 
-// function browserGeocode() {
-  
-// }
 
+
+    
 
 function handleLocationError(browserHasGeolocation, infoWindow, pos) {
   infoWindow.setPosition(pos);
@@ -135,6 +135,7 @@ var gmapDo = {
 
   getGeocode: function() {
     // const location = "60626"
+    const location = $('#user-input').val();
     axios.get("https://maps.googleapis.com/maps/api/geocode/json", {
         params: {
           address: location,
@@ -156,8 +157,8 @@ var gmapDo = {
         addressCompOutput += '</ul>';
         console.log(formattedAddress);
         console.log(addressCompOutput);
-        document.getElementById('address').innerHTML = formattedAddress;
-        document.getElementById('address_comp').innerHTML = addressCompOutput;
+        // document.getElementById('address').innerHTML = formattedAddress;
+        // document.getElementById('address_comp').innerHTML = addressCompOutput;
 
 
       })
@@ -166,3 +167,5 @@ var gmapDo = {
       })
   }
 }
+
+$('#add-search').on('click', gmapDo.getGeocode)
